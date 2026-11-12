@@ -88,18 +88,19 @@ std::string renderModeName(RenderMode m) { switch (m) { case RenderMode::Solid:r
 																				  glColor3f(.9f, .94f, 1);text(x + 22, 34, "RUBIK 3D LAB", GLUT_BITMAP_HELVETICA_18);
 																				  const char* buttons[] = { "U","D","L","R","F","B","U'","R'","Shuffle","Reset","Undo","Redo","Light","Projection","Speed -","Speed +" };
 																				  for (int i = 0;i < 16;++i) { const int col = i % 2, row = i / 2;const float bx = x + 18.0f + static_cast<float>(col * 116), by = 58.0f + static_cast<float>(row * 42);rect(bx, by, 104.0f, 32.0f, .105f, .125f, .16f);glColor3f(.82f, .88f, .98f);text(bx + 12, by + 21, buttons[i]); }
-																				  std::ostringstream status;status << "State: " << (cube.isSolved() ? "SOLVED" : "MIXED");glColor3f(cube.isSolved() ? .35f : 1, cube.isSolved() ? 1 : .72f, .45f);text(x + 20, 414, status.str());
-																				  glColor3f(.72f, .78f, .88f);text(x + 20, 436, "Mode: " + renderModeName(mode_));text(x + 20, 458, std::string("Projection: ") + (camera.projectionMode() == ProjectionMode::Perspective ? "Perspective" : "Orthographic"));
-																				  text(x + 20, 480, std::string("Lighting: ") + (lighting_ ? "On" : "Off") + " | Culling: " + (culling_ ? "On" : "Off"));
-																				  text(x + 20, 502, std::string("Shading: ") + (shading_ == ShadingMode::Flat ? "Flat" : "Gouraud"));
-																				  status.str("");status << "Moves: " << cube.history().done.size() << " | FPS: " << static_cast<int>(fps + .5);text(x + 20, 524, status.str());
-																				  status.str("");status << "Animation: " << (anim.busy() ? "running" : "idle") << " | " << anim.duration() << "s";text(x + 20, 546, status.str());
-																				  text(x + 20, 568, std::string("Camera tour: ") + (camera.tourActive() ? "running" : "idle"));
-																				  if (anim.activeMove())text(x + 20, 590, "Current: " + toString(*anim.activeMove()));
-																				  std::string recent = "Recent:";const auto& done = cube.history().done;const std::size_t begin = done.size() > 7 ? done.size() - 7 : 0;for (std::size_t i = begin;i < done.size();++i)recent += " " + toString(done[i]);text(x + 20, 612, recent);
-																				  if (!algorithmMessage.empty())text(x + 20, 634, algorithmMessage);
-																				  glColor3f(.56f, .64f, .76f);text(x + 20, static_cast<float>(h - 78), "A algorithm | W modes | N net");text(x + 20, static_cast<float>(h - 58), "T camera tour | Q/E net rotate");text(x + 20, static_cast<float>(h - 38), "Drag orbit | Wheel zoom | H help");
-																				  if (help) { rect(24, 24, static_cast<float>(std::max(260, w - panelWidth() - 48)), 204, .04f, .05f, .07f);glColor3f(.9f, .94f, 1);text(44, 54, "Controls", GLUT_BITMAP_HELVETICA_18);text(44, 82, "U D L R F B: turn face; hold Shift for inverse");text(44, 106, "Space: animated scramble | Ctrl+Z/Y: undo/redo");text(44, 130, "P: projection | W: render modes | N: 2D raster net");text(44, 154, "K: Lambert light | G: Flat/Gouraud | C: culling");text(44, 178, "T: Bezier camera tour | Q/E: rotate net | +/-: scale net");text(44, 202, "Esc: exit"); }
+																  const char* sliceButtons[] = { "M","E","S" };for (int i = 0;i < 3;++i) { const float bx = x + 18.0f + static_cast<float>(i * 76);rect(bx, 394, 68, 30, .12f, .16f, .21f);glColor3f(.9f, .85f, .4f);text(bx + 27, 414, sliceButtons[i]); }
+																  std::ostringstream status;status << "State: " << (cube.isSolved() ? "SOLVED" : "MIXED");glColor3f(cube.isSolved() ? .35f : 1, cube.isSolved() ? 1 : .72f, .45f);text(x + 20, 438, status.str());
+																  glColor3f(.72f, .78f, .88f);text(x + 20, 460, "Mode: " + renderModeName(mode_));text(x + 20, 482, std::string("Projection: ") + (camera.projectionMode() == ProjectionMode::Perspective ? "Perspective" : "Orthographic"));
+																  text(x + 20, 504, std::string("Lighting: ") + (lighting_ ? "On" : "Off") + " | Culling: " + (culling_ ? "On" : "Off"));
+																  text(x + 20, 526, std::string("Shading: ") + (shading_ == ShadingMode::Flat ? "Flat" : "Gouraud"));
+																  status.str("");status << "Moves: " << cube.history().done.size() << " | FPS: " << static_cast<int>(fps + .5);text(x + 20, 548, status.str());
+																  status.str("");status << "Animation: " << (anim.busy() ? "running" : "idle") << " | " << anim.duration() << "s";text(x + 20, 570, status.str());
+																  text(x + 20, 592, std::string("Camera tour: ") + (camera.tourActive() ? "running" : "idle"));
+																  if (anim.activeMove())text(x + 20, 614, "Current: " + toString(*anim.activeMove()));
+																  std::string recent = "Recent:";const auto& done = cube.history().done;const std::size_t begin = done.size() > 7 ? done.size() - 7 : 0;for (std::size_t i = begin;i < done.size();++i)recent += " " + toString(done[i]);text(x + 20, 636, recent);
+																  if (!algorithmMessage.empty())text(x + 20, 658, algorithmMessage);
+																  glColor3f(.56f, .64f, .76f);text(x + 20, static_cast<float>(h - 78), "A algorithm | W modes | N net");text(x + 20, static_cast<float>(h - 58), "M/E/S middle | [/] net rotate");text(x + 20, static_cast<float>(h - 38), "Drag orbit | Wheel zoom | H help");
+																  if (help) { rect(24, 24, static_cast<float>(std::max(260, w - panelWidth() - 48)), 228, .04f, .05f, .07f);glColor3f(.9f, .94f, 1);text(44, 54, "Controls", GLUT_BITMAP_HELVETICA_18);text(44, 82, "U D L R F B: turn face; M E S: turn middle slices");text(44, 106, "Hold Shift for inverse | Space: animated scramble");text(44, 130, "Ctrl+Z/Y: undo/redo | P: projection | W: modes");text(44, 154, "N: 2D net | K: light | G: Flat/Gouraud | C: culling");text(44, 178, "T: Bezier camera tour | [/] rotate net | +/-: scale net");text(44, 202, "A: enter algorithm | H: close help | Esc: exit"); }
 																				  if (algorithmEntry) { const float overlayWidth = static_cast<float>(std::max(300, w - panelWidth() - 96));rect(48, static_cast<float>(h - 96), overlayWidth, 56, .045f, .055f, .075f);glColor3f(.9f, .94f, 1);text(66, static_cast<float>(h - 72), "Algorithm (Enter to queue, Esc to cancel):", GLUT_BITMAP_HELVETICA_12);glColor3f(.3f, .75f, 1);text(66, static_cast<float>(h - 50), algorithmText + "_"); }
 																			  }
 } // namespace rubik

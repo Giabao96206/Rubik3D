@@ -28,12 +28,12 @@ Tài liệu này dùng để tra nhanh **thuật toán nằm ở file nào, hàm
 | Thuật toán | Đoạn cài đặt | Nơi sử dụng | Chức năng |
 |---|---|---|---|
 | Tạo Face Model/Wireframe | [`Mesh::unitCube()` - `src/Geometry/Mesh.cpp`, dòng 5](../src/Geometry/Mesh.cpp#L5) | [`Renderer::drawCubie()`, dòng 46](../src/Graphics/Renderer.cpp#L46) | Tạo một cubie từ 8 đỉnh, 12 cạnh và 6 mặt; Solid duyệt mặt, Wireframe duyệt cạnh. |
-| Ánh xạ ký hiệu bước quay | [`signedAxisTurns()` - `RubikMoves.cpp`, dòng 49](../src/Rubik/RubikMoves.cpp#L49) | [`RubiksCube::applyMove()`, dòng 75](../src/Rubik/RubiksCube.cpp#L75) | Chuyển U/D/L/R/F/B, dấu `'` và `2` thành trục, layer và chiều quay. |
-| Quay Rubik rời rạc | [`RubiksCube::rotateDiscrete()` - dòng 60](../src/Rubik/RubiksCube.cpp#L60) | [`applyMove()`, dòng 75](../src/Rubik/RubiksCube.cpp#L75) | Cập nhật tọa độ nguyên và hướng sticker của đúng 9 cubie, không tích lũy sai số float. |
-| Phân tích chuỗi Rubik | [`parseAlgorithm()` - `RubikMoves.cpp`, dòng 34](../src/Rubik/RubikMoves.cpp#L34) | [Ô nhập thuật toán - `InputManager.cpp`, dòng 13](../src/UI/InputManager.cpp#L13) | Đọc chuỗi như `R U R' U' F2` thành danh sách `Move`. |
-| Kiểm tra hoàn thành | [`RubiksCube::isSolved()` - dòng 83](../src/Rubik/RubiksCube.cpp#L83) | Panel trạng thái và test Rubik | So sánh vị trí/hướng sticker hiện tại với trạng thái solved ban đầu. |
-| Shuffle | [`RubiksCube::scramble()` - dòng 101](../src/Rubik/RubiksCube.cpp#L101) | Nút Shuffle và Space | Sinh bước ngẫu nhiên hợp lệ, tránh hai bước liên tiếp trên cùng trục. |
-| Undo/Redo | [`undo()` và `redo()` - dòng 115-123](../src/Rubik/RubiksCube.cpp#L115-L123) | Nút Undo/Redo, `Ctrl+Z`, `Ctrl+Y` | Undo áp dụng bước nghịch đảo; redo thực hiện lại bước đã hoàn tác. |
+| Ánh xạ ký hiệu bước quay | [`signedAxisTurns()` - `RubikMoves.cpp`, dòng 58](../src/Rubik/RubikMoves.cpp#L58) | [`RubiksCube::applyMove()`, dòng 76](../src/Rubik/RubiksCube.cpp#L76) | Chuyển U/D/L/R/F/B và lát giữa M/E/S, dấu `'`, `2` thành trục, layer và chiều quay. |
+| Quay Rubik rời rạc | [`RubiksCube::rotateDiscrete()` - dòng 61](../src/Rubik/RubiksCube.cpp#L61) | [`applyMove()`, dòng 76](../src/Rubik/RubiksCube.cpp#L76) | Cập nhật tọa độ nguyên và hướng sticker của layer `-1`, `0` hoặc `1`, không tích lũy sai số float. Layer 0 là lát giữa quanh lõi tâm. |
+| Phân tích chuỗi Rubik | [`parseAlgorithm()` - `RubikMoves.cpp`, dòng 36](../src/Rubik/RubikMoves.cpp#L36) | [Ô nhập thuật toán - `InputManager.cpp`, dòng 13](../src/UI/InputManager.cpp#L13) | Đọc chuỗi như `R U M' E2 S` thành danh sách `Move`. |
+| Kiểm tra hoàn thành | [`RubiksCube::isSolved()` - dòng 84](../src/Rubik/RubiksCube.cpp#L84) | Panel trạng thái và test Rubik | So sánh vị trí/hướng sticker hiện tại với trạng thái solved ban đầu. |
+| Shuffle | [`RubiksCube::scramble()` - dòng 102](../src/Rubik/RubiksCube.cpp#L102) | Nút Shuffle và Space | Sinh bước ngẫu nhiên hợp lệ, tránh hai bước liên tiếp trên cùng trục. |
+| Undo/Redo | [`undo()` và `redo()` - dòng 116-124](../src/Rubik/RubiksCube.cpp#L116-L124) | Nút Undo/Redo, `Ctrl+Z`, `Ctrl+Y` | Undo áp dụng bước nghịch đảo; redo thực hiện lại bước đã hoàn tác, bao gồm M/E/S. |
 
 ## Animation và đường cong
 

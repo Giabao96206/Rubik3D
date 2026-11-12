@@ -5,7 +5,7 @@
 ## Tính năng
 
 - 27 cubie (26 cubie hiển thị và một lõi ẩn), mỗi cubie có ID, vị trí nguyên và hướng sticker riêng.
-- Các bước `U D L R F B`, dấu phẩy, `2`; animation theo `deltaTime`, hàng đợi transaction.
+- Các bước mặt ngoài `U D L R F B` và lát giữa `M E S`, hỗ trợ dấu `'`, `2`, animation theo `deltaTime` và hàng đợi transaction.
 - Shuffle, reset, undo/redo, lịch sử bước và kiểm tra solved.
 - Camera orbit/zoom, phép chiếu perspective/orthographic tự dựng bằng ma trận 4x4.
 - Solid, Wireframe từ danh sách cạnh, Solid + Wireframe, Lighting, 2D Net.
@@ -97,6 +97,7 @@ ctest --test-dir build-core -C Release --output-on-failure
 | Phím/thao tác | Chức năng |
 |---|---|
 | `U D L R F B` | Quay mặt tương ứng |
+| `M E S` | Quay lát giữa quanh lõi tâm theo trục X/Y/Z |
 | `Shift` + phím mặt | Quay ngược |
 | `Space` | Shuffle 25 bước có animation |
 | `Ctrl+Z`, `Ctrl+Y` | Undo, redo |
@@ -108,11 +109,11 @@ ctest --test-dir build-core -C Release --output-on-failure
 | `K`, `C`, `G` | Lighting, Culling, Flat/Gouraud |
 | `T` | Camera Tour Bézier |
 | `A` | Nhập chuỗi thuật toán, ví dụ `R U R' U'` |
-| `Q/E`, `+/-` | Quay và scale 2D Net |
+| `[`/`]`, `+/-` | Quay và scale 2D Net |
 | `H` | Trợ giúp |
 | `Esc` | Thoát |
 
-Panel bên phải có nút bước quay, Shuffle, Reset, Undo/Redo, Lighting, Projection, tốc độ animation và các bước gần nhất. Trong chế độ nhập thuật toán, Enter đưa cả chuỗi vào hàng đợi, Backspace sửa và Esc hủy.
+Panel bên phải có nút bước quay mặt ngoài, nút lát giữa M/E/S, Shuffle, Reset, Undo/Redo, Lighting, Projection, tốc độ animation và các bước gần nhất. Trong chế độ nhập thuật toán, Enter đưa cả chuỗi vào hàng đợi, Backspace sửa và Esc hủy.
 
 ## Tài liệu
 

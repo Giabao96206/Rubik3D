@@ -32,6 +32,7 @@ namespace rubik {
 			case Face::R:return Direction::PosX;case Face::L:return Direction::NegX;
 			case Face::U:return Direction::PosY;case Face::D:return Direction::NegY;
 			case Face::F:return Direction::PosZ;case Face::B:return Direction::NegZ;
+			case Face::M:case Face::E:case Face::S:break;
 			}
 			return Direction::PosY;
 		}
@@ -125,11 +126,13 @@ namespace rubik {
 
 	StickerColor RubiksCube::colorAt(Face face, int row, int column) const {
 		if (row < 0 || row>2 || column < 0 || column>2)throw std::out_of_range("Net coordinates");
+		if (face == Face::M || face == Face::E || face == Face::S)throw std::invalid_argument("Middle slices do not have a 2D net face");
 		Int3 wanted{};
 		switch (face) {
 		case Face::F:wanted = { column - 1,1 - row,1 };break; case Face::B:wanted = { 1 - column,1 - row,-1 };break;
 		case Face::U:wanted = { column - 1,1,row - 1 };break; case Face::D:wanted = { column - 1,-1,1 - row };break;
 		case Face::R:wanted = { 1,1 - row,1 - column };break; case Face::L:wanted = { -1,1 - row,column - 1 };break;
+		case Face::M:case Face::E:case Face::S:break;
 		}
 		const auto it = std::find_if(cubies_.begin(), cubies_.end(), [&](const Cubie& c) {return c.position == wanted;});
 		return it == cubies_.end() ? StickerColor::None : it->stickers[static_cast<int>(outward(face))];

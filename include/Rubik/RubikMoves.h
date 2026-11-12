@@ -5,7 +5,8 @@
 
 namespace rubik {
 
-enum class Face { U, D, L, R, F, B };
+// M/E/S là ba lát giữa, lần lượt song song với L/R, U/D và F/B.
+enum class Face { U, D, L, R, F, B, M, E, S };
 enum class Axis { X, Y, Z };
 
 struct Move {

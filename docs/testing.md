@@ -12,6 +12,7 @@ Hoặc chạy trực tiếp `rubik_tests.exe` để thấy từng case.
 
 - Matrix: identity, translation, rotation 90 độ quanh X/Y/Z, `T*R*S`, biến đổi 2D thuần nhất.
 - Rubik: 27 cubie/sticker hợp lệ; `U^4`; `R R'`; `F2 F2`; chuỗi và nghịch đảo; shuffle; undo/redo.
+- Lát giữa: `M^4`, `E^4`, `S^4`, bước nghịch đảo và bước kép đều khôi phục đúng trạng thái.
 - Animation: logic chưa đổi giữa transaction và chỉ commit một lần khi kết thúc.
 - Bresenham: đủ tám octant và hai đầu mút.
 - Cohen-Sutherland: accept, reject, giao hai biên.
@@ -26,7 +27,7 @@ Hoặc chạy trực tiếp `rubik_tests.exe` để thấy từng case.
 3. Thực hiện `R`, quan sát đúng 9 cubie xoay mượt và số bước chỉ tăng khi kết thúc.
 4. Shuffle, Undo/Redo, Reset; trạng thái panel phải khớp.
 5. Đổi projection và orbit; màu/sticker không đổi.
-6. Mở 2D Net; so sánh sticker với mô hình 3D; thử Q/E và +/-.
+6. Mở 2D Net; so sánh sticker với mô hình 3D; thử `[`/`]`, `+/-`.
 7. Chạy camera tour; camera di chuyển liên tục và luôn nhìn tâm.
 
 ## Giới hạn

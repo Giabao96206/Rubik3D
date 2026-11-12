@@ -7,6 +7,7 @@ Build theo README rồi chạy `Rubik3D.exe`. Cửa sổ gồm viewport 3D bên 
 ## Thao tác Rubik
 
 - Nhấn `U D L R F B` hoặc click nút cùng tên.
+- Nhấn `M E S` hoặc nút M/E/S để quay ba lát giữa: M song song L/R, E song song U/D, S song song F/B.
 - Giữ Shift để tạo bước nghịch đảo, ví dụ `Shift+R` tương ứng `R'`.
 - Các lệnh mới khi animation đang chạy được xếp hàng, không sửa trạng thái giữa transaction.
 - `Shuffle`/Space tạo 25 bước hợp lệ, tránh hai bước liên tiếp trên cùng trục.
@@ -25,7 +26,7 @@ Build theo README rồi chạy `Rubik3D.exe`. Cửa sổ gồm viewport 3D bên 
 
 ## 2D Net
 
-Nhấn `N`. Sáu mặt được trải thành hình chữ thập và đồng bộ với trạng thái 3D. Mỗi ô được tô bằng Scanline Fill, viền bằng Bresenham, đoạn minh họa được xén Cohen-Sutherland. `Q/E` quay net và `+/-` đổi tỷ lệ bằng ma trận thuần nhất 3x3.
+Nhấn `N`. Sáu mặt được trải thành hình chữ thập và đồng bộ với trạng thái 3D. Mỗi ô được tô bằng Scanline Fill, viền bằng Bresenham, đoạn minh họa được xén Cohen-Sutherland. `[`/`]` quay net và `+/-` đổi tỷ lệ bằng ma trận thuần nhất 3x3.
 
 ## Trợ giúp và trạng thái
 

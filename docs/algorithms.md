@@ -18,7 +18,7 @@ Với vector cột 3D `P=(x,y,z,1)^T`, chương trình dùng `P' = M P`. Phép g
 Với quay dương 90 độ quanh Z: `(x,y,z) -> (-y,x,z)`. Quanh X: `(x,y,z)->(x,-z,y)`; quanh Y: `(x,y,z)->(z,y,-x)`. Chương trình lặp phép ánh xạ nguyên 1-3 lần thay vì lưu kết quả `sin/cos` float. Mỗi sticker được đổi sang vector hướng, quay cùng công thức, rồi ánh xạ về một trong sáu Direction.
 
 - Cài đặt: `RubiksCube::rotateDiscrete`, `signedAxisTurns`.
-- Sử dụng: mọi bước U/D/L/R/F/B.
+- Sử dụng: các bước mặt ngoài U/D/L/R/F/B và lát giữa M/E/S. M quay như L, E quay như D, S quay như F.
 - Độ phức tạp: O(27), thực tế chỉ sửa 9 cubie của layer.
 - Test: `U^4=I`, `R R'=I`, `F2 F2=I`, chuỗi và nghịch đảo.
 - Câu hỏi: tại sao không tích lũy float? Vì sai số làm tọa độ lệch khỏi `{-1,0,1}` và phá việc chọn layer.
@@ -62,7 +62,7 @@ Với mỗi y, thuật toán lấy giao điểm với cạnh thỏa quy tắc n�
 
 ## 6. Biến đổi 2D
 
-2D Net áp dụng `T(center+offset) * R(angle) * S(scale) * T(-center)` trên mỗi đỉnh sticker trước khi raster hóa. Đây là minh họa trực tiếp tọa độ thuần nhất 3x3; Q/E thay angle, +/- thay scale.
+2D Net áp dụng `T(center+offset) * R(angle) * S(scale) * T(-center)` trên mỗi đỉnh sticker trước khi raster hóa. Đây là minh họa trực tiếp tọa độ thuần nhất 3x3; `[`/`]` thay angle, `+/-` thay scale.
 
 - Cài đặt: `Matrix3x3`, `Renderer::drawNet`.
 - Test: rotation + translation trong `test_matrix.cpp`.
