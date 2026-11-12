@@ -118,6 +118,7 @@ Panel bên phải có nút bước quay, Shuffle, Reset, Undo/Redo, Lighting, Pr
 
 - [Kiến trúc](docs/architecture.md)
 - [Thuật toán và nội dung bảo vệ](docs/algorithms.md)
+- [Bản đồ thuật toán trong mã nguồn](docs/algorithm-code-map.md)
 - [Hướng dẫn sử dụng](docs/user-guide.md)
 - [Kiểm thử](docs/testing.md)
 
