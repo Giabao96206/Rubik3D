@@ -1,0 +1,38 @@
+# Visual Studio / editors
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.VC.db
+*.VC.VC.opendb
+
+# Legacy empty Visual Studio scaffold (the project is CMake-based)
+/Rubik3D.slnx
+/Rubik3D/
+
+# CMake and generated build trees
+build/
+build-*/
+out/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+
+# Compiled binaries and debug data
+*.exe
+*.dll
+*.lib
+*.exp
+*.obj
+*.o
+*.pdb
+*.ilk
+
+# OS files
+Thumbs.db
+.DS_Store
+
