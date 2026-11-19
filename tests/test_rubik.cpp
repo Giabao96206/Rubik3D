@@ -3,6 +3,36 @@
 #include "Rubik/RotationAnimator.h"
 
 using namespace rubik;
+TEST_CASE("Whole cube turns remap face colors and preserve a solved cube") {
+    RubiksCube cube;
+    const auto front = cube.colorAt(Face::F, 1, 1);
+    cube.applyAlgorithm("x");
+    REQUIRE(cube.colorAt(Face::U, 1, 1) == front);
+    REQUIRE(cube.isSolved());
+    REQUIRE(cube.undo());
+    cube.applyAlgorithm("y");
+    REQUIRE(cube.colorAt(Face::L, 1, 1) == front);
+    REQUIRE(cube.isSolved());
+    cube.applyAlgorithm("L");
+    REQUIRE(!cube.isSolved());
+    REQUIRE(cube.colorAt(Face::L, 1, 1) == front);
+    REQUIRE(cube.isValid());
+}
+
+TEST_CASE("Compact algorithms queue rotations and face turns in order") {
+    const auto moves = parseAlgorithm("xy2RUR'U'");
+    REQUIRE(moves == parseAlgorithm("x y2 R U R' U'"));
+    REQUIRE(moves.size() == 6);
+    REQUIRE(toString(moves[1]) == "y2");
+    RubiksCube cube;
+    RotationAnimator animator;
+    for (const Move& move : moves) animator.enqueue(move);
+    for (size_t i = 0; i < moves.size(); ++i) animator.update(1.0, cube);
+    REQUIRE(cube.history().done == moves);
+    REQUIRE(!animator.busy());
+    for (auto it = moves.rbegin(); it != moves.rend(); ++it) cube.applyMove(inverse(*it));
+    REQUIRE(cube.isSolved());
+}
 TEST_CASE("Solved cube has 27 cubies and valid stickers"){RubiksCube c;REQUIRE(c.cubies().size()==27);REQUIRE(c.isSolved());REQUIRE(c.isValid());}
 TEST_CASE("U four times restores state"){RubiksCube c;for(int i=0;i<4;++i)c.rotateFace(Face::U,1);REQUIRE(c.isSolved());REQUIRE(c.isValid());}
 TEST_CASE("R then inverse restores state"){RubiksCube c;c.applyAlgorithm("R R'");REQUIRE(c.isSolved());}

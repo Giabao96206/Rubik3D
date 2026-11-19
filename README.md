@@ -98,6 +98,7 @@ ctest --test-dir build-core -C Release --output-on-failure
 |---|---|
 | `U D L R F B` | Quay mặt tương ứng |
 | `M E S` | Quay lát giữa quanh lõi tâm theo trục X/Y/Z |
+| `x`, `y` | Xoay toàn khối quanh trục X/Y, cùng chiều với R/U |
 | `Shift` + phím mặt | Quay ngược |
 | `Space` | Shuffle 25 bước có animation |
 | `Ctrl+Z`, `Ctrl+Y` | Undo, redo |
@@ -108,7 +109,7 @@ ctest --test-dir build-core -C Release --output-on-failure
 | `N` | 2D Net raster |
 | `K`, `C`, `G` | Lighting, Culling, Flat/Gouraud |
 | `T` | Camera Tour Bézier |
-| `A` | Nhập chuỗi thuật toán, ví dụ `R U R' U'` |
+| `A` | Nhập chuỗi thuật toán rồi nhấn Enter, ví dụ `x R U R' U' y2` hoặc `RUR'U'` |
 | `[`/`]`, `+/-` | Quay và scale 2D Net |
 | `H` | Trợ giúp |
 | `Esc` | Thoát |

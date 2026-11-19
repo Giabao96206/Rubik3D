@@ -8,12 +8,13 @@ Build theo README rồi chạy `Rubik3D.exe`. Cửa sổ gồm viewport 3D bên 
 
 - Nhấn `U D L R F B` hoặc click nút cùng tên.
 - Nhấn `M E S` hoặc nút M/E/S để quay ba lát giữa: M song song L/R, E song song U/D, S song song F/B.
+- Nhấn `x` hoặc `y` để xoay cả khối theo chiều R hoặc U. Giữ Shift để quay ngược. Sau khi xoay, các chữ như `L` và `U` chọn mặt đang ở bên trái và phía trên theo hệ trục của khối trên màn hình. Trạng thái vẫn là SOLVED nếu sáu mặt đồng màu.
 - Giữ Shift để tạo bước nghịch đảo, ví dụ `Shift+R` tương ứng `R'`.
 - Các lệnh mới khi animation đang chạy được xếp hàng, không sửa trạng thái giữa transaction.
 - `Shuffle`/Space tạo 25 bước hợp lệ, tránh hai bước liên tiếp trên cùng trục.
 - Undo/Redo chỉ chạy khi hàng đợi animation rỗng.
 - Reset xóa hàng đợi, trạng thái và history.
-- Nhấn `A` để nhập chuỗi như `R U R' U' F2`; Enter đưa các bước hợp lệ vào hàng đợi, Backspace sửa và Esc hủy. Panel hiển thị bảy bước gần nhất.
+- Nhấn `A` để nhập chuỗi như `x R U R' U' y2` hoặc `RUR'U'`. Enter chạy chuỗi, Backspace sửa và Esc hủy. Nếu chuỗi sai, thông báo xuất hiện ngay trong ô nhập.
 
 ## Camera và hiển thị
 

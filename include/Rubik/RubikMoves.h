@@ -6,7 +6,7 @@
 namespace rubik {
 
 // M/E/S là ba lát giữa, lần lượt song song với L/R, U/D và F/B.
-enum class Face { U, D, L, R, F, B, M, E, S };
+enum class Face { U, D, L, R, F, B, M, E, S, X, Y };
 enum class Axis { X, Y, Z };
 
 struct Move {
@@ -21,6 +21,7 @@ std::vector<Move> parseAlgorithm(const std::string& text);
 Move inverse(const Move& move);
 Axis axisOf(Face face);
 int layerOf(Face face);
+bool isWholeCubeRotation(Face face);
 int signedAxisTurns(const Move& move);
 
 } // namespace rubik

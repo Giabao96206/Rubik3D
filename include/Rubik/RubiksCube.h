@@ -28,7 +28,7 @@ public:
 private:
     std::vector<Cubie> cubies_;
     MoveHistory history_;
-    void rotateDiscrete(Axis axis, int layer, int signedTurns);
+    void rotateDiscrete(Face face, int signedTurns);
 };
 
 } // namespace rubik
